@@ -18,7 +18,7 @@ spec:
   podMonitorSelector: {}
   probeNamespaceSelector: {}
   probeSelector: {}
-  replicas: 2
+  replicas: 1
   resources:
     requests:
       memory: 400Mi
@@ -37,3 +37,10 @@ spec:
   additionalScrapeConfigs:
     name: additional-scrape-configs
     key: prometheus-additional.yaml
+  storage:
+    volumeClaimTemplate:
+      spec:
+        storageClassName: gp2
+        resources:
+          requests:
+            storage: 40Gi
