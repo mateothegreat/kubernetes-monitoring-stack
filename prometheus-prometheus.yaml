@@ -13,7 +13,7 @@ spec:
       port: web
   image: quay.io/prometheus/prometheus:v2.20.0
   nodeSelector:
-    kubernetes.io/os: linux
+    role: services
   podMonitorNamespaceSelector: {}
   podMonitorSelector: {}
   probeNamespaceSelector: {}
