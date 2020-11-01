@@ -1,3 +1,0 @@
-- job_name: "rabbitmq"
-  static_configs:
-    - targets: ["rabbitmq-rabbitmq-client:15692"]
