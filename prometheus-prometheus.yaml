@@ -32,7 +32,9 @@ spec:
     runAsUser: 1000
   serviceAccountName: prometheus-k8s
   serviceMonitorNamespaceSelector: {}
-  serviceMonitorSelector: {}
+  serviceMonitorSelector:
+    matchLabels:
+      team: frontend
   version: v2.20.0
   additionalScrapeConfigs:
     name: additional-scrape-configs
