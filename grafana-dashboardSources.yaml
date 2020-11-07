@@ -5,10 +5,18 @@ data:
         "apiVersion": 1,
         "providers": [
             {
-                "folder": "Default",
+                "folder": "System",
                 "name": "0",
                 "options": {
                     "path": "/grafana-dashboard-definitions/0"
+                },
+                "orgId": 1,
+                "type": "file"
+            }, {
+                "folder": "Application Layer",
+                "name": "1",
+                "options": {
+                    "path": "/grafana-dashboard-definitions/1"
                 },
                 "orgId": 1,
                 "type": "file"
