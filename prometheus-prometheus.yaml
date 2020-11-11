@@ -6,6 +6,9 @@ metadata:
   name: k8s
   namespace: monitoring
 spec:
+  thanos:
+    baseImage: quay.io/thanos/thanos
+    version: v0.16.0
   alerting:
     alertmanagers:
     - name: alertmanager-main
