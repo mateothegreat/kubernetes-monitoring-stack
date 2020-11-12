@@ -1,53 +1,53 @@
-apiVersion: monitoring.coreos.com/v1
-kind: Prometheus
-metadata:
-  labels:
-    prometheus: k8s
-  name: k8s
-  namespace: monitoring
-spec:
-  thanos:
-    baseImage: quay.io/thanos/thanos
-    version: v0.16.0
-  alerting:
-    alertmanagers:
-    - name: alertmanager-main
-      namespace: monitoring
-      port: web
-  image: quay.io/prometheus/prometheus:v2.20.0
-  nodeSelector:
-    role: services
-  podMonitorNamespaceSelector: {}
-  podMonitorSelector: {}
-  probeNamespaceSelector: {}
-  probeSelector: {}
-  replicas: 1
-  resources:
-    requests:
-      memory: 200Mi
-      cpu: 000m
-  ruleSelector:
-    matchLabels:
-      prometheus: k8s
-      role: alert-rules
-  securityContext:
-    fsGroup: 2000
-    runAsNonRoot: true
-    runAsUser: 1000
-  serviceAccountName: prometheus-k8s
-  serviceMonitorNamespaceSelector: {}
-  serviceMonitorSelector: {}
-#  serviceMonitorSelector:
+#apiVersion: monitoring.coreos.com/v1
+#kind: Prometheus
+#metadata:
+#  labels:
+#    prometheus: k8s
+#  name: k8s
+#  namespace: monitoring
+#spec:
+#  thanos:
+#    baseImage: quay.io/thanos/thanos
+#    version: v0.16.0
+#  alerting:
+#    alertmanagers:
+#    - name: alertmanager-main
+#      namespace: monitoring
+#      port: web
+#  image: quay.io/prometheus/prometheus:v2.20.0
+#  nodeSelector:
+#    role: services
+#  podMonitorNamespaceSelector: {}
+#  podMonitorSelector: {}
+#  probeNamespaceSelector: {}
+#  probeSelector: {}
+#  replicas: 1
+#  resources:
+#    requests:
+#      memory: 200Mi
+#      cpu: 000m
+#  ruleSelector:
 #    matchLabels:
-#      team: frontend
-  version: v2.20.0
-  additionalScrapeConfigs:
-    name: additional-scrape-configs
-    key: prometheus-additional.yaml
-  storage:
-    volumeClaimTemplate:
-      spec:
-        storageClassName: gp2
-        resources:
-          requests:
-            storage: 40Gi
+#      prometheus: k8s
+#      role: alert-rules
+#  securityContext:
+#    fsGroup: 2000
+#    runAsNonRoot: true
+#    runAsUser: 1000
+#  serviceAccountName: prometheus-k8s
+#  serviceMonitorNamespaceSelector: {}
+#  serviceMonitorSelector: {}
+##  serviceMonitorSelector:
+##    matchLabels:
+##      team: frontend
+#  version: v2.20.0
+#  additionalScrapeConfigs:
+#    name: additional-scrape-configs
+#    key: prometheus-additional.yaml
+#  storage:
+#    volumeClaimTemplate:
+#      spec:
+#        storageClassName: gp2
+#        resources:
+#          requests:
+#            storage: 40Gi
