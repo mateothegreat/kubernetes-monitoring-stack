@@ -6,9 +6,16 @@
 #  name: k8s
 #  namespace: monitoring
 #spec:
+#  externalLabels:
+#    product: cam-ingest
+#    cluster: maa-ml-cam-ingest-prod
+#    environment: prod
 #  thanos:
 #    baseImage: quay.io/thanos/thanos
 #    version: v0.16.0
+#    objectStorageConfig:
+#      key: thanos.yaml
+#      name: thanos-objstore-config
 #  alerting:
 #    alertmanagers:
 #    - name: alertmanager-main
