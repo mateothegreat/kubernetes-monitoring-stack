@@ -7,10 +7,19 @@ Convert these kubernetes manifests to terraform resource definitions.
 
 See: https://github.com/sl1pm4t/k2tf
 
+## Running
+
+Example loop:
+
+```bash
+for f in $(ls *.yaml); do echo $f; cat $f | k2tf > out/$f.tf; done
+```
+
 ## Errors that require manual intervention
 
 ```bash
 ➜  kubernetes-monitoring-stack git:(main) ✗ for f in $(ls *.yaml); do echo $f; cat $f | k2tf > out/$f.tf; done
+
 alertmanager-alertmanager.yaml
 5:40PM Fatal | Could not parse stdin                                         error="2 errors occurred:\n\t* could not decode yaml object with main scheme #1: no kind \"Alertmanager\" is registered for version \"monitoring.coreos.com/v1\" in scheme \"pkg/runtime/scheme.go:101\"\n\t* could not decode yaml object with aggregator scheme #1: no kind \"Alertmanager\" is registered for version \"monitoring.coreos.com/v1\" in scheme \"pkg/runtime/scheme.go:101\"\n\n"
 alertmanager-secret.yaml
