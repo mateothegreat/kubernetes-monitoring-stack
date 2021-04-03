@@ -1,3 +1,12 @@
+## Requirements
+
+Convert these kubernetes manifests to terraform resource definitions.
+
+> Note: Most of this can be done easily with `k2tf`. The CRD's however need
+> some manual intervention or automation love.
+
+See: https://github.com/sl1pm4t/k2tf
+
 ## Errors that require manual intervention
 
 ```bash
