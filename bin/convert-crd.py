@@ -11,11 +11,15 @@ import yaml
 with open(sys.argv[1]) as y:
     original_yaml = yaml.safe_load(y)
 
-    if "status" in original_yaml.keys():
+    if original_yaml and "status" in original_yaml.keys():
         original_yaml.pop("status")
 
-    resource_name = f'{original_yaml["metadata"]["name"].replace(".", "_")}_' \
-                    f'{original_yaml["kind"].lower()}'
+    if original_yaml and "original_yaml" in original_yaml.keys():
+        resource_name = f'{original_yaml["metadata"]["name"].replace(".", "_").replace(":", "_")}_' \
+                        f'{original_yaml["kind"].lower()}'
+
+    else:
+        resource_name = sys.argv[1].replace(".yaml", "")
 
 with open(sys.argv[2], "w") as f:
     text = json.dumps(original_yaml, indent=4)

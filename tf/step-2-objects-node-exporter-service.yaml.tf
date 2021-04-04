@@ -1,4 +1,4 @@
-resource "kubernetes_manifest" "prometheus-operator_service" {
+resource "kubernetes_manifest" "node-exporter-service" {
 
     provider = kubernetes-alpha
 
@@ -7,11 +7,10 @@ resource "kubernetes_manifest" "prometheus-operator_service" {
     "kind": "Service",
     "metadata": {
         "labels": {
-            "app.kubernetes.io/component": "controller",
-            "app.kubernetes.io/name": "prometheus-operator",
-            "app.kubernetes.io/version": "v0.42.1"
+            "app.kubernetes.io/name": "node-exporter",
+            "app.kubernetes.io/version": "v1.0.1"
         },
-        "name": "prometheus-operator",
+        "name": "node-exporter",
         "namespace": var.operator_namespace
     },
     "spec": {
@@ -19,14 +18,13 @@ resource "kubernetes_manifest" "prometheus-operator_service" {
         "ports": [
             {
                 "name": "https",
-                "port": 8443,
+                "port": 9100,
                 "targetPort": "https",
                 "protocol": "TCP"
             }
         ],
         "selector": {
-            "app.kubernetes.io/component": "controller",
-            "app.kubernetes.io/name": "prometheus-operator"
+            "app.kubernetes.io/name": "node-exporter"
         }
     }
 }
